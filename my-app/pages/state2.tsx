@@ -5,19 +5,20 @@ export default function State2() {
   const [name, setName] = useState("");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
-    
   };
   return (
     <>
       <input type="text" onChange={handleChange} />
+      <br></br>
       <Child1 text={name} />
+      <br></br>
       <Child2 text={name} />
     </>
   );
 }
 
 function Child1({ text = "" }: { text: string }) {
-  return <p>子コンポーネント1: {text}</p>;
+  return <>子コンポーネント1: {text} </>;
 }
 
 function Child2({ text = "" }: { text: string }) {
@@ -26,6 +27,8 @@ function Child2({ text = "" }: { text: string }) {
     setName2(e.target.value);
   };
   return (
+    // 子コンポーネント2:は再描画されないようにみえる
+    // これはReact.Fragmentのせい
     <>
       子コンポーネント2:
       <input type="text" onChange={handleChange} />
