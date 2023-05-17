@@ -8,10 +8,10 @@ export default function State2() {
   };
   return (
     <>
-      <input type="text" onChange={handleChange} />
-      <Child1 text={name} />
       {/* XML構文なので <br>ではエラー */}
       <br />
+      <input type="text" onChange={handleChange} />
+      <Child1 text={name} />
       <Child2 text={name} />
     </>
   );
