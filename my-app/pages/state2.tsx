@@ -9,16 +9,16 @@ export default function State2() {
   return (
     <>
       <input type="text" onChange={handleChange} />
-      <br></br>
       <Child1 text={name} />
-      <br></br>
+      {/* XML構文なので <br>ではエラー */}
+      <br />
       <Child2 text={name} />
     </>
   );
 }
 
 function Child1({ text = "" }: { text: string }) {
-  return <>子コンポーネント1: {text} </>;
+  return <p>子コンポーネント1: {text}</p>;
 }
 
 function Child2({ text = "" }: { text: string }) {
@@ -27,8 +27,7 @@ function Child2({ text = "" }: { text: string }) {
     setName2(e.target.value);
   };
   return (
-    // 子コンポーネント2:は再描画されないようにみえる
-    // これはReact.Fragmentのせい
+    // ハイライトが当たらず子コンポーネント2:は再描画されていないようにみえる
     <>
       子コンポーネント2:
       <input type="text" onChange={handleChange} />
